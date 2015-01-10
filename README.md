@@ -1,7 +1,7 @@
 ## Introduction
 **elementary.cmake** is a set of predefined [cmake](http://cmake.org/) macros to build vala projects in a simple declarative way using sane defaults.
 
-All is needed in **one only cmake** `CMakeLists.txt` filefile for your whole project
+All is needed in **only one ** `CMakeLists.txt` file for your whole project
 
 ```cmake
 cmake_minimum_required (VERSION 2.8)
@@ -64,14 +64,14 @@ Write a cmake `CMakeLists.txt` file as described in [the documentation](docs/doc
 
 > Note: `CMakeLists.txt` may contain many build_elementary_xxx calls if your project produces many binary files
 
-Run 
+Run:
 ```
 mkdir build && cd build
 cmake ../ 
 make
 ```
 
-> Note: elementary.cmake set `CMAKE_INSTALL_PREFIX` to `/usr` and uses the value `BUILD_TYPE` for `CMAKE_BUILD_TYPE`
+> Note: elementary.cmake set `CMAKE_INSTALL_PREFIX` to `/usr` and uses the value `BUILD_TYPE` for `CMAKE_BUILD_TYPE`. You can override those values from the command line.
 
 ## Differences with other cmake setup
 - Only one cmake file `CMakeLists.txt` is needed for the entire project. No need to have a cmake file in sub folder or in the `po` folder
