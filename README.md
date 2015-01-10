@@ -34,13 +34,13 @@ build_elementary_app (
 build_translations()
 ```
 
-elementary.cmake can create the following binary files: 
-   - UI application: `build_elementary_app`
+elementary.cmake builds the following binary files: 
+   - application with a UI: `build_elementary_app`
    - command line (cli) application: `build_elementary_cli`
    - library (static or shared): `build_elementary_library`
    - elementary plug (shared library): `build_elementary_plug`
 
-elementary.cmake creates the following make targets
+elementary.cmake creates the following `make` targets:
    - `make`: build the binary with support for translations
        - generates a `Build` vala namespace   
        - generates the `pc` and `deps` file if the binary is a library 
@@ -73,7 +73,7 @@ make
 
 > Note: elementary.cmake set `CMAKE_INSTALL_PREFIX` to `/usr` and uses the value `BUILD_TYPE` for `CMAKE_BUILD_TYPE`
 
-## Differences with other cmake configuration
+## Differences with other cmake setup
 - Only one cmake file `CMakeLists.txt` is needed for the entire project. No need to have a cmake file in sub folder or in the `po` folder
 -  Additional files are generated: no need to have `Config.vala.cmake` or `.deps` or `.deps.cmake` or `.pc` or `.pc.cmake` files
 -  No need to bother with pc packages (managed with `pkg_check_modules`). elementary.cmake can deduce the list from the vala package (and handle the case when the pc package is different from the vala package name via [a dependency map](docs/dependencies.md))  
@@ -93,6 +93,6 @@ You can find samples for:
 [5]: https://code.launchpad.net/~elementary-apps/webcontracts/fix-for-freya
 
 
-## Documentation 
+## [Documentation](docs/doc.md) 
 
 # [Changelog](CHANGELOG.md)
