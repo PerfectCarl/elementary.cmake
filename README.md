@@ -89,7 +89,7 @@ You can find samples for:
 [1]: https://github.com/PerfectCarl/vala-stacktrace
 [2]: https://code.launchpad.net/~name-is-carl/eidete/use-elementary.cmake
 [3]: https://launchpad.net/switchboard
-[4]: https://code.launchpad.net/~name-is-carlswitchboard-plug-useraccounts/use-elementary.cmake
+[4]: https://code.launchpad.net/~name-is-carl/switchboard-plug-useraccounts/use-elementary.cmake
 [5]: https://code.launchpad.net/~elementary-apps/webcontracts/fix-for-freya
 
 
