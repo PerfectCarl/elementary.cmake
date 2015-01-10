@@ -13,22 +13,30 @@ set (VALA_VERSION_MIN "0.26")
 
 set (BUILD_TYPE "Release")
 
+# icon, desktop and translations are automatically found from the data/ and po/ folders   
 build_elementary_app (
     BINARY_NAME
-        webcontracts
+        eidete
     TITLE
-        "Sharing Accounts"
+        "Screen recording application for elementary"
     VERSION
         "0.2"
+    RELEASE_NAME
+        "Feature rich and functional."
     SOURCE_PATH
         src
     PACKAGES
-        gtk+-3.0
-        json-glib-1.0
+        libwnck-3.0
         granite
-        rest-0.7
-        webkitgtk-3.0
-        libsoup-2.4
+        xtst
+        gdk-x11-3.0
+        x11
+        gstreamer-1.0
+        gstreamer-pbutils-1.0
+    C_DEFINES
+        WNCK_I_KNOW_THIS_IS_UNSTABLE
+    VALA_OPTIONS
+        --enable-experimental
 )
 
 build_translations()
