@@ -95,4 +95,4 @@ You can find samples for:
 
 ## [Documentation](docs/doc.md) 
 
-# [Changelog](CHANGELOG.md)
+## [Changelog](CHANGELOG.md)
