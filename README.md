@@ -1,9 +1,9 @@
-# Introduction
-elementary.cmake is a set of predefined [cmake](http://cmake.org/) macros to build vala projects in a simple declarative way using sane defaults.
+## Introduction
+**elementary.cmake** is a set of predefined [cmake](http://cmake.org/) macros to build vala projects in a simple declarative way using sane defaults.
 
-All is needed in **one only cmake** file for your whole project
+All is needed in **one only cmake** `CMakeLists.txt` filefile for your whole project
 
-```
+```cmake
 cmake_minimum_required (VERSION 2.8)
 cmake_policy (VERSION 2.8)
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
@@ -35,18 +35,19 @@ build_translations()
 ```
 
 elementary.cmake can create the following binary files: 
-   - ui application (executable)
-   - cli application (executable)
-   - static or shared library
-   - elementary plug (linux shared library)
-   - simple script
+   - UI application: `build_elementary_app`
+   - command line (cli) application: `build_elementary_cli`
+   - library (static or shared): `build_elementary_library`
+   - elementary plug (shared library): `build_elementary_plug`
 
 elementary.cmake creates the following make targets
    - `make`: build the binary with support for translations
+       - generates a `Build` vala namespace   
+       - generates the `pc` and `deps` file if the binary is a library 
+       - uses translation files if available in the `po` folder
    - `make install`: install the binary along with provided files (.desktop, icons, contracts)
-       - if the binary is a library elementary.cmake generates the `pc` and `deps` file
-  - `make uninstall`:
-  - `make pot`: create the translations files
+   - `make uninstall`:
+   - `make pot`: create the translations files
 
 elementary.cmake generates a [build file](docs/build.md) that can be called from vala code:  
 ```java
@@ -55,36 +56,43 @@ elementary.cmake generates a [build file](docs/build.md) that can be called from
    }
 ```
 
-# How to use
+## How to use
 
 Replace the cmake folder in your project by the one provided.
 
-Write a `CMakeLists.txt` file using elementary.cmake macros : 
-  - `build_elementary_plug`
-  - `build_elementary_app`
-  - `build_elementary_cli`
-  - `build_elementary_library`
-  - `build_translations`
+Write a cmake `CMakeLists.txt` file as described in [the documentation](docs/doc.md)
 
-> Note: `CMakeLists.txt` file may contain many build_elementary calls if your project produces many binary files
+> Note: `CMakeLists.txt` may contain many build_elementary_xxx calls if your project produces many binary files
 
 Run 
 ```
-build && mkdir build && cd build &&  
+build && mkdir build && cd build
 cmake ../ 
 make
 ```
 
 > Note: elementary.cmake set `CMAKE_INSTALL_PREFIX` to `/usr` and uses the value `BUILD_TYPE` for `CMAKE_BUILD_TYPE`
 
-# Samples
+## Differences with other cmake configuration
+- Only one cmake file `CMakeLists.txt` is needed for the entire project. No need to have a cmake file in sub folder or in the `po` folder
+-  Additional files are generated: no need to have `Config.vala.cmake` or `.deps` or `.deps.cmake` or `.pc` or `.pc.cmake` files
+-  No need to bother with pc packages (managed with `pkg_check_modules`). elementary.cmake can deduce the list from the vala package (and handle the case when the pc package is different from the vala package name via [a dependency map](dosc/dependencies.md))  
+
+## Samples
 
 You can find samples for: 
-  - a library and a sample cli test program: [vala-stacktrace](https://github.com/PerfectCarl/vala-stacktrace)
-  - an elementary gtk app: [eidete](https://code.launchpad.net/~name-is-carl/eidete/use-elementary.cmake)
-  - an elementary [switchboard](https://launchpad.net/switchboard) plug: [useraccounts](https://code.launchpad.net/~name-is-carlswitchboard-plug-useraccounts/use-elementary.cmake)
-  - an elementary plug and a cli application: [webcontracts](https://code.launchpad.net/~elementary-apps/webcontracts/fix-for-freya)
+  - [vala-stacktrace][1]: a library and a sample cli test program
+  - [eidete][2]: an elementary gtk app
+  - [useraccounts][4]: an elementary [switchboard][3] plug 
+  - [webcontracts][5]: an elementary plug shipping with a cli application 
 
-# Documentation 
+[1]: https://github.com/PerfectCarl/vala-stacktrace
+[2]: https://code.launchpad.net/~name-is-carl/eidete/use-elementary.cmake
+[3]: https://launchpad.net/switchboard
+[4]: https://code.launchpad.net/~name-is-carlswitchboard-plug-useraccounts/use-elementary.cmake
+[5]: https://code.launchpad.net/~elementary-apps/webcontracts/fix-for-freya
+
+
+## Documentation 
 
 # [Changelog](CHANGELOG.md)
