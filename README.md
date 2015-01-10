@@ -66,7 +66,7 @@ Write a cmake `CMakeLists.txt` file as described in [the documentation](docs/doc
 
 Run 
 ```
-build && mkdir build && cd build
+mkdir build && cd build
 cmake ../ 
 make
 ```
@@ -76,7 +76,7 @@ make
 ## Differences with other cmake configuration
 - Only one cmake file `CMakeLists.txt` is needed for the entire project. No need to have a cmake file in sub folder or in the `po` folder
 -  Additional files are generated: no need to have `Config.vala.cmake` or `.deps` or `.deps.cmake` or `.pc` or `.pc.cmake` files
--  No need to bother with pc packages (managed with `pkg_check_modules`). elementary.cmake can deduce the list from the vala package (and handle the case when the pc package is different from the vala package name via [a dependency map](dosc/dependencies.md))  
+-  No need to bother with pc packages (managed with `pkg_check_modules`). elementary.cmake can deduce the list from the vala package (and handle the case when the pc package is different from the vala package name via [a dependency map](docs/dependencies.md))  
 
 ## Samples
 
